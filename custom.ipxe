@@ -1,12 +1,13 @@
 #!ipxe
 ###
-### netboot.xyz-custom menu
+### netboot.xyz-custom menu example
 ###
 
-:start
-echo Hello world!
-sleep 10
-goto custom_exit
+:option_one
+kernel https://boot.netboot.xyz/memdisk raw iso
+initrd http://images.douch.org/misc/chromiumos_image.img
+boot || goto custom_exit
 
 :custom_exit
-exit 0
+chain utils.ipxe
+exit
